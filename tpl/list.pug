@@ -1,0 +1,27 @@
+extend base
+
+block content
+  .article
+    .contain.article-wrap
+      .article-title
+        h3 全部研究报告
+      if errors
+        .article-error
+          include ./mod/error.pug
+      if articleList && articleList.length
+        .article-list
+          each item,idx in articleList
+            - var _articleId = _.get(item, '_id', 0) || 0
+            - var _articleTitle = _.get(item, 'title') || ''
+            - var _articleClass = _.get(item, 'class') || ''
+            - var _articleCreatetime = _.get(item, 'createTime[0]', 0) - 0 || 0
+            .article-item
+              .article-item-body
+                a(href='/add/'+_articleId).article-item-title #{_articleTitle}
+                p #{UIHelper.formatdate('YYYY-MM-DD HH:mm', _articleCreatetime)}
+                a(href='/del/'+_articleId)#J_del 删除
+        include ./mod/pager.pug
+      else
+        .no-result 暂无数据
+      //-
+        textarea(style="width: 100%; height: 100px") #{JSON.stringify(articleList)}

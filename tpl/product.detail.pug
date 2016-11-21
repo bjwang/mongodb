@@ -1,0 +1,92 @@
+extend base
+
+block content
+  - var item = productDetail
+  - var _prodcutStatus = _.get(item, 'status', 0) || 0
+  - var _productName = _.get(item, 'productName') || ''
+  - var _productContent = _.get(item, 'shortContent') || ''
+  - var _prodcutId = _.get(item, 'productId', 0) || 0
+  - var _productDisplayContentType = _.get(item, 'displayContentType', 0) || 0
+  - var _prodcutInvestStartAmount = _.get(item, 'investStartAmount', 0) || 0
+  - var _productFixedMgmtFee = _.get(item, 'fixedMgmtFee', 0) || 0
+  - var _productFloatMgmtFee = _.get(item, 'floatMgmtFee', 0) || 0
+  - var _productSubscriptionFeeRate = _.get(item, 'subscriptionFeeRate', 0) || 0
+  - var _productRaiseScale = _.get(item, 'raiseScale', 0) || 0
+  - var _productInvestStepAmount = _.get(item, 'investStepAmount', 0) || 0
+  - var _productIntroduceImageAddress = _.get(item, 'introduceImageAddress') || ''
+  - var _productCategory = _.get(item, 'category', 0) || 0
+  - var _productDuration = _.get(item, 'duration', 0) || 0
+  - var _isStock = UIHelper.CATEGORY_STOCK
+  - var _isSecurities = UIHelper.CATEGORY_SECURITIES
+  - var _ownerManagerLogo = _.get(item, 'managerLogo') || ''
+  - var _ownerManagerName = _.get(item, 'managerName') || ''
+  .product
+    .contain
+      if errors
+        .product-error
+          include ./mod/error.pug
+      .product-desc
+        .product-desc-body
+          .product-desc-logo: img(src= _ownerManagerLogo)
+          .product-desc-info
+            h2 #{_productName}
+            h4 #{_productContent}
+            .product-desc-parameter
+              .item-list
+                span.item-list-title 基金：
+                span.item-list-content #{_ownerManagerName}
+              .item-list
+                span.item-list-title 期限：
+                span.item-list-content #{_productDuration}
+            .product-desc-parameter
+              .item-list
+                span.item-list-title 费率：
+                span.item-list-content #{UIHelper.formatNumber(_productSubscriptionFeeRate, 2)}%
+              .item-list
+                span.item-list-title 起投：
+                span.item-list-content #{UIHelper.formatNumber(_prodcutInvestStartAmount/10000)}万
+        .product-desc-header
+          a(href='javascript:;').pure-button.product-btn-primary#J_order 立即预约
+      .product-desc.product-detail
+        .product-desc-title: h3 产品详情
+        .product-detail-content
+          .item-detail.item-detail-first
+            dl
+              dt 产品名称：
+              dd #{_productName}
+            dl
+              dt 产品类型：
+              if _productCategory == _isStock
+                dd 私募股权
+              else if _productCategory == _isSecurities
+                dd 私募证券
+            dl
+              dt 产品期限：
+              dd #{_productDuration}
+          .item-detail.item-detail-middle
+            dl
+              dt 递增金额：
+              dd #{UIHelper.formatNumber(_productInvestStepAmount/10000)}万
+            dl
+              dt 募集规模：
+              dd #{UIHelper.formatNumber(_productRaiseScale/10000)}万
+            dl
+              dt 认购费率：
+              dd #{UIHelper.formatNumber(_productSubscriptionFeeRate, 2)}%
+          .item-detail
+            dl
+              dt 浮动管理费：
+              dd #{UIHelper.formatNumber(_productFloatMgmtFee, 2)}%
+            dl
+              dt 固定管理费：
+              dd #{UIHelper.formatNumber(_productFixedMgmtFee, 2)}%
+        .product-content-img
+          img(src= _productIntroduceImageAddress)
+      include ./mod/confirm.product.order.pug
+block foot-script
+  - var _prodcutId = _.get(productDetail, 'productId', 0) || 0
+  script.
+    var _productid = #{_prodcutId}
+    app.productDetail.init({
+      productId: _productid
+    });

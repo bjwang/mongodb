@@ -1,0 +1,52 @@
+each item,idx in dataList
+  - var _prodcutStatus = _.get(item, 'status', 0) || 0
+  - var _productName = _.get(item, 'productName') || ''
+  - var _productContent = _.get(item, 'shortContent') || ''
+  - var _prodcutId = _.get(item, 'productId', 0) || 0
+  - var _productDisplayContentType = _.get(item, 'displayContentType', 0) || 0
+  - var _prodcutInvestStartAmount = _.get(item, 'investStartAmount', 0) || 0
+  - var _productInvestTarget = _.get(item, 'investTarget') || ''
+  - var _productPastAverageYield = _.get(item, 'pastAverageYield', 0) || 0
+  - var _productSubscriptionFeeRate = _.get(item, 'subscriptionFeeRate', 0) || 0
+  - var _productDuration = _.get(item, 'duration', 0) || 0
+  - var _productCategory = _.get(item, 'category', 0) || 0
+  - var _isStock = UIHelper.CATEGORY_STOCK
+  - var _isSecurities = UIHelper.CATEGORY_SECURITIES
+  - var _ownerManagerLogo = _.get(item, 'managerLogo') || ''
+  - var _ownerManagerName = _.get(item, 'managerName') || ''
+  .product-item
+    .item-body
+      a(href='/product/' + _prodcutId).item-title
+        | #{_productName}
+        if _productCategory == _isStock
+          span 私募股权
+        else if _productCategory == _isSecurities
+          span 私募证券
+      .item-subtitle #{_productContent}
+      .item-detail
+        dl(class= _productDisplayContentType == 1 ? 'item-rate' : 'item-direct')
+          if _productDisplayContentType == 1
+            dt #{UIHelper.formatNumber(_productPastAverageYield, 2)}%
+            dd 过往平均收益率
+          else
+            dt #{_productInvestTarget}
+            dd 投资方向
+        dl.item-base-fee
+          dt
+            label 基金公司：
+            span #{_ownerManagerName}
+          dd
+            label 认/申购费率：
+            span #{UIHelper.formatNumber(_productSubscriptionFeeRate, 2)}%
+        dl.item-amount
+          dt
+            label 产品期限：
+            span #{_productDuration}
+          dd
+            label 起投金额：
+            span #{UIHelper.formatNumber(_prodcutInvestStartAmount/10000)}万
+    .item-header
+      .item-product-logo
+        img(src= _ownerManagerLogo)
+      .item-product-owner-name #{_ownerManagerName}
+      a(href='/product/' + _prodcutId).item-product-join 我要预约

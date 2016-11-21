@@ -1,0 +1,32 @@
+extend base
+
+block content
+  - var _query = query || {}
+  .login
+    .login-wrap
+      h2 东家帐号登录
+      #J_login-error.login-errors.text-danger
+        if errors
+          .login-error
+            include ./mod/error.pug
+      form#J_login-form(action='/login', method='post').pure-form.pure-form-aligned
+        .pure-control-group.form-group
+          input#J_mobile(name='mobile', type='text', value=_query.mobile, placeholder='请输入手机号', minlength='11', maxlength = '11')
+        .pure-control-group.form-group
+          input#J_password(name='password', type='password', placeholder='请输入登录密码', minlength='3', maxlength='30')
+        .pure-control-group.login-forget
+          a(href='/forgot') 忘记密码
+        .pure-control-group
+          input(type='hidden', name='_csrf', value=csrf)
+          button.pure-button.btn-button-primary.login-btn(type='submit') 登录
+        .pure-control-group.login-reg-link
+          | 没有帐号？
+          a(href='/signup') 立即注册
+
+block foot-script
+  script.
+    app.login({
+      form: '#J_login-form',
+      mobile: '#J_mobile',
+      password: '#J_password'
+    });

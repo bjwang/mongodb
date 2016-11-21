@@ -1,0 +1,14 @@
+extend base
+
+block content
+  - var _articleTitle = _.get(articleDetail, 'title') || ''
+  - var _articleClass = _.get(articleDetail, 'class') || ''
+  - var _articleContent = _.get(articleDetail, 'content') || ''
+  .article
+    .contain.article-wrap
+      .article-title
+        h3 研究详情
+      .article-detail
+        h1 #{_articleTitle}
+        .article-detail-subtitle #{_articleClass}
+        .article-detail-body!= _articleContent

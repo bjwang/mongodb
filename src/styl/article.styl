@@ -1,0 +1,115 @@
+.article
+  $article-line-color = #eeeff1
+  $article-grey-font-color = #999999
+  $article-grey-title-color = #333333
+  background: url('/img/article-header.png') top center no-repeat $grey-base-bg
+  padding: 320px 0 40px
+  min-width: $container-width
+  &-wrap
+    background: $white-color
+    min-height: 500px
+  &-title
+    border-bottom: 1px solid $article-line-color
+    padding: 14px 0
+    h3
+      margin: 0
+      font-weight: normal
+      border-left: 4px solid $base-color
+      line-height: 28px
+      padding-left: 30px
+      color: $gray-darker
+  &-list
+    padding: 20px 40px
+    h2
+      margin: 0 0 10px
+    .article-item
+      border-bottom: 1px solid $article-line-color
+      padding: 40px 6px 20px
+      clearfix()
+      &-header
+        width: 330px
+        height: 160px
+        float: left
+        position: relative
+        img
+          width: 100%
+      &-class-title
+        position: absolute
+        line-height: 42px
+        bottom: 0
+        left: 0
+        width: 100%
+        background: rgba(0, 0, 0, .5)
+        color: $white-color
+        padding-left: 16px
+        font-size: $font-size-middle
+        font-weight: bold
+      &-title
+        font-size: $font-size-huge
+        font-weight: bold
+        text-decoration: none
+        color: $gray-darker
+        display: block
+        margin-bottom: 18px
+        word-wrap: break-word
+      &-body
+        margin: 0 0 0 370px
+      &-introduction
+        font-size: $font-size-middle
+        color: $grey-color
+        line-height: 26px
+        word-wrap:break-word
+        overflow:hidden
+        text-decoration: none
+      &-footer
+        margin-top: 16px
+        span
+          color: #aaaaaa
+          margin-right: 10px
+        a
+          float: right
+          color: $base-color
+          text-decoration: none
+  &-detail
+    padding-bottom: 40px
+    h1
+      font-size: $font-size-h3
+      text-align: center
+      margin: 60px 0 10px
+      color: $gray-darker
+    &-subtitle
+      text-align: center
+      color: #aaaaaa
+      font-size: $font-size-h5
+      font-weight: normal
+      margin: 0
+      padding-bottom: 20px
+      span
+        margin-left: 10px
+        color: $base-color
+    &-body
+      padding: 60px 130px
+      word-wrap:break-word
+      overflow:hidden
+      img
+        max-width: 100%
+    &-downloadbtn
+      text-align: center
+      a
+        background: $base-color
+        color: $white-color
+        line-height: 40px
+        padding: 0 80px
+        display: inline-block
+        text-decoration: none
+        border-radius(4px)
+        &:hover
+          background: $base-hover-color
+      i
+        margin-right: 6px
+    &-listlink
+      margin-top: 20px
+      text-align: center
+      a
+        color: $base-color
+        text-decoration: none

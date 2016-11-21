@@ -1,0 +1,13 @@
+*.DS_*
+*.idea*
+*.vscode*
+node_modules
+*.log
+Thumbs.db
+npm-debug.log
+/config.js
+/.idea
+static/js/app.js
+static/css/*.css
+static/css/*/*.css
+static/build/*/*

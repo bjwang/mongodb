@@ -1,0 +1,54 @@
+extend base
+
+block content
+  .service
+    - var nav = 'service'
+    include ./mod/product.service.header.pug
+    .contain
+      .service-title
+        h2 投资管理
+      .service-text
+        p 东家财富是京东金融旗下高端财富管理服务平台，专注于为高端客户提供优质资产和科学的进行资产配置服务。
+        p 依托京东金融集团强大的资源整合能力以及大数据的优势、专业风险控制能力，对用户资产的收益、风险、流动性进行科学管理，满足高端人群的个性化财富管理需求，帮助客户实现财富持续保值和增值。
+    .service-debt.service-wrap
+      .contain
+        .service-debt-img: img(src='/img/service-img-01.png')
+        .service-debt-text
+          h2
+            | 01
+            span / Private debt
+          .service-txt-title 私募债券 / 信托
+          .service-txt-content 依托京东集团强大的资源整合能力，信托、保险、券商资管、基金子公司等金融机构信贷资产管理优势，优选集团内部资产及国有、央企等控股公司资产。严格风控项目准入，精耕细作投后管理。满足客户低风险、较高收益中长期资产理财需求。
+    .service-overseas.service-wrap
+      .contain
+        .service-overseas-text
+          h2 02
+            span  / Overseas investment
+          .service-txt-title 海外投资
+          .service-txt-content 利用京东作为纳斯达克上市公司的优势，战略布局海外，把握全球周期性投资机会，业务覆盖境外股票、房地产信托投资基金、房地产投资基金、对冲基金、债券等不同资产类别产品。分散单一市场风险，实现跨市场、跨币种的分散配置，优化投资组合。
+        .service-overseas-img: img(src='/img/service-img-02.png')
+    .service-equity.service-wrap
+      .contain
+        .service-equity-img: img(src='/img/service-img-03.png')
+        .service-equity-text
+          h2 03
+            span / Private equity
+          .service-txt-title 私募股权类产品
+          .service-txt-content 携手国内顶级私募股权投资机构，布局科技创新与新兴产业版图，打造最有潜力股权投资机会，分享新经济发展成果，满足客户中长期资产配置的需求。
+    .service-funds.service-wrap
+      .contain
+        .service-funds-text
+          h2 04
+            span / Private equity funds
+          .service-txt-title 私募基金类产品
+          .service-txt-content 选行业优秀投顾，以股票多头、市场中性、宏观对冲等为核心投资策略，优先多头策略阳光私募、CTA策略对冲、量化对冲等产品。为客户提供多样化的大类资产配置工具，同时获利于市场长期成长和周期变换。
+        .service-funds-img: img(src='/img/service-img-04.png')
+    .service-alter.service-wrap
+      .contain
+        .service-alter-img: img(src='/img/service-img-05.png')
+        .service-alter-text
+          h2 05
+            span / Alternative investment
+          .service-txt-title 另类投资产品
+          .service-txt-content 艺术品、奢侈品、钻石、顶级红酒等小众投资市场，为客户带来增长稳定，波动小，长期稳定的投资收益率。
+

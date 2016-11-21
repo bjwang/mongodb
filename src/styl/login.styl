@@ -1,0 +1,58 @@
+.login
+  $signup-border-color = #f5f5f5
+  $signup-input-border-color = #e5e5e5
+  min-width: $container-width
+  padding: 90px 0 108px
+  min-height: 780px
+  background: url('/img/login-top-banner.png') center center no-repeat
+  &-wrap
+    width: 440px
+    height: 350px
+    margin: 0 auto
+    overflow: hidden
+    background: $white-color
+    padding: 40px 70px
+    border-radius(2px)
+    h2
+      color: $base-color
+      text-align: center
+      margin: 0 0 20px
+      font-size: $font-size-h3
+    .pure-form
+      input
+        width: 100%
+        box-shadow: none
+        border: 1px solid $signup-input-border-color
+        padding: 10px 16px
+        line-height: 18px
+        border-radius(2px)
+        &:focus
+          border-color: $base-color
+    .login-btn
+      width: 100%
+      padding: 0
+      line-height: 42px
+      font-size: $font-size-middle
+    .pure-control-group
+      margin-bottom: 10px
+  &-forget
+    text-align: right
+    a
+      color: $grey-color-better
+      text-decoration: none
+      font-size: $font-size-h6
+  &-reg-link
+    text-align: center
+    color: $grey-color-better
+    font-size: $font-size-h6
+    a
+      color: $base-color
+      text-decoration: none
+  &-errors
+    color: $brand-danger
+    height: 18px
+    line-height: 18px
+    ul
+      padding: 0
+    li
+      list-style: none

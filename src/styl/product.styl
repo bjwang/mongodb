@@ -1,0 +1,239 @@
+.product
+  $product-border-color = $product-border-color
+  $product-item-border-color = #888888
+  $product-title-color = $base-gray
+  $product-subtitle-color = #b99146
+  $product-line-color = #dadfe0
+  $product-joinbtn-hover-color = #ac7f2c
+  $product-line-lingter-color = #f8f8f8
+  background: $grey-base-bg
+  padding: 40px 0 100px
+  min-width: $container-width
+  &-item
+    border: 1px solid $product-item-border-color
+    padding: 26px 32px 32px 32px
+    margin-bottom: 20px
+    clearfix()
+    .item
+      &-body
+        width: 894px
+        float: left
+      &-header
+        margin-left: 894px
+      &-title
+        font-size: $font-size-h4
+        color: $gray-darker
+        text-decoration: none
+        span
+          font-size: $font-size-h6
+          color: $base-red-color
+          border: 1px solid $base-red-color
+          margin-left: 14px
+          padding: 2px 10px
+          line-height: 14px
+          border-radius(2px)
+          display: inline-block
+          vertical-align: middle
+          margin-top: -2px
+      &-subtitle
+        color: $product-subtitle-color
+        font-size: $font-size-base
+        margin-top: 6px
+      &-detail
+        overflow: hidden
+        margin-top: 22px
+        label
+          color: $product-item-border-color
+        span
+          color: $gray-darker
+        dd
+          margin: 10px 0 0
+          padding: 0
+        dl
+          float: left
+        dt
+        dd
+          font-size: $font-size-middle
+      &-rate
+        width: 170px
+        margin: 0
+        dt
+          font-size: $font-size-h1
+          color: $base-red-color
+          line-height: $font-size-h1
+          margin-bottom: 4px
+        dd
+          color: $base-gray
+          font-size: $font-size-base
+          margin: 0
+      &-direct
+        width: 170px
+        margin: 0
+        dt
+          font-size: $font-size-bigger
+          color: $base-red-color
+        dd
+          color: $base-gray
+          font-size: $font-size-base
+          margin: 0
+      &-base-fee
+        border-left: 1px dashed $product-line-color
+        border-right: 1px dashed $product-line-color
+        padding: 0 40px 0 58px
+        margin: 0 70px
+      &-amount
+        margin: 0
+      &-product-logo
+        text-align: center
+        img
+          max-width: 80px
+          vertical-align: bottom
+      &-product-owner-name
+        text-align: center
+        font-size: $font-size-base
+        padding: 0 0 10px
+      &-product-join
+        width: 140px
+        color: $white-color
+        background: $base-color
+        display: inline-block
+        font-size: $font-size-middle
+        line-height: 36px
+        border-radius: 4px
+        text-decoration: none
+        text-align: center
+        &:hover
+          background: $product-joinbtn-hover-color
+  &-desc
+    $product-dotted-color = #cecece
+    background: $white-color
+    padding: 40px
+    margin-bottom: 20px
+    clearfix()
+    &-title
+      border-bottom: 1px solid $base-line-grey-color
+      padding: 0 0 10px
+      margin-bottom: 40px
+      h3
+        margin: 0
+        border-left: 4px solid $base-color
+        padding-left: 30px
+        font-weight: normal
+        line-height: 28px
+    &-header
+      margin-left: 84%
+    &-body
+      width: 84%
+      float: left
+    &-logo
+      color: $white-color
+      size(148px)
+      line-height: 148px
+      text-align: center
+      font-size: $font-size-h1
+      float: left
+      margin-right: 60px
+      img
+        max-width: 100%
+    &-info
+      h2
+        margin: 0
+        line-height: 30px
+        font-size: $font-size-h4
+        font-weight: normal
+        color: $gray-darker
+      h4
+        font-size: $font-size-base
+        font-weight: normal
+        color: $product-subtitle-color
+        margin: 0 0 26px
+    &-parameter
+      overflow: hidden
+      font-size: $font-size-middle
+      margin-top: 10px
+      .item-list
+        width: 50%
+        float: left
+        &-title
+          color: $product-item-border-color
+        &-content
+          color: $gray-darker
+  &-detail
+    padding: 8px 0 20px
+  &-btn-primary
+    width: 140px
+    height: 36px
+    text-align: center
+    padding: 0
+    line-height: 36px
+    color: $white-color
+    background: $base-color
+    margin-top: 60px
+    border-radius(4px)
+    &:hover
+      background: $base-hover-color
+  &-detail-content
+    clearfix()
+    .item-detail
+      width: 33.33%
+      padding: 0 20px
+      float: left
+      &-middle
+        border-left: 1px dashed $base-line-grey-color
+        border-right: 1px dashed $base-line-grey-color
+      dl
+        margin: 0
+      dt
+      dd
+        width: 49%
+        margin: 0
+        display: inline-block
+        line-height: 36px
+        font-size: $font-size-middle
+        color: $gray-darker
+      dt
+        text-align: right
+        color: $product-item-border-color
+      dd
+        text-align: left
+      &-first
+        dt
+        dd
+          width: auto
+  &-content-img
+    padding: 50px 20px 20px
+    img
+      max-width: 100%
+      display: block
+      margin: 0 auto
+  &-order-result
+    h3
+      font-size: $font-size-h3
+      font-weight: normal
+      padding: 60px 0 20px
+      margin: 0
+      color: $gray-darker
+      i
+        display: inline-block
+        vertical-align: middle
+        margin: -2px 20px 0 0
+        font-size: 34px
+    .result-txt
+      padding: 0 100px
+      font-size: $font-size-middle
+      color: $grey-color-better
+    .product-order-btn
+      padding: 0 64px
+      height: 44px
+      line-height: 44px
+      font-size: $font-size-h4
+      display: inline-block
+      margin-top: 40px
+    .product-order-succes
+      font-size: 46px
+      margin: 10px 20px 10px
+      color: $brand-success
+    .product-order-succes-text
+      padding-bottom: 10px
+    .product-order-error
+      color: $base-red-color

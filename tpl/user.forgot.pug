@@ -1,0 +1,92 @@
+extend base
+
+block content
+  - var _mobile = _.get(query, 'mobile', '')
+  .signup
+    .contain.signup-wrap
+      .signup-header
+        h2 重置密码
+        if result
+          .result-success
+            i.fa.fa-check-circle
+            | 密码重置成功
+          p 为保证您的账户安全，5s后将自动跳转至登录页，请重新登录。
+          script.
+            setTimeout(function () {
+              location.href = '/login';
+            }, 5000);
+        else
+          if errors
+            .signup-error
+              include ./mod/error.pug
+          form#J_signup-form.pure-form.pure-form-aligned(method='post')
+            .pure-control-group.form-group
+              label(for='J_mobile') 手机号码
+              input#J_mobile(type='text', name='mobile', placeholder='请输入手机号码', value=_mobile, minlength='11', maxlength='11')
+              .help-inline
+            .pure-control-group.form-group
+              label(for='J_captcha') 图形验证码
+              input#J_captcha(type='text', name='captcha', minlength='4', maxlength='6', value='', placeholder='请输入图形验证码').signup-captcha
+              img#J_captcha-img.J_captcha-refresh.captcha-img(src='/captcha?_='+Math.random().toString().substr(2,6), data-target='#J_captcha-img', data-src='/captcha', alt='看不清，点击刷新')
+              .help-inline
+            .pure-control-group.form-group
+              label(for='J_code') 验证码
+              input(type='text', id='J_code', name='smscode', minlength='6', maxlength='6', placeholder='请输入验证码').signup-code
+              button#J_verifycode.btn.verifycode-button(type='button', tabindex='-1') 获取验证码
+              .help-inline
+            .pure-control-group.form-group
+              label(for='J_newpassword') 新的登录密码
+              input#J_newpassword(type='password', name='newpassword', placeholder='请输入新的登录密码')
+              .help-inline
+            .pure-control-group.form-group
+              label(for='J_repassword') 确认密码
+              input#J_repassword(type='password', name='repassword', placeholder='请再次输入确认密码')
+              .help-inline
+            .pure-controls
+              input(type='hidden', name='_csrf', value=csrf)
+              button(type='submit').pure-button.btn-button-primary.btn-signup 提交
+      .signup-body
+block foot-script
+  script.
+    var util = app.util;
+    var ErrMsg = util.ErrMsg;
+    app.accountPassword({
+      form: '#J_signup-form',
+      newpwd: '#J_newpassword',
+      repwd: '#J_repassword',
+      mobile: '#J_mobile',
+      trigger: '#J_verifycode',
+      action: 'forgot',
+      captcha: '#J_captcha',
+      captchaimg: '.J_captcha-refresh',
+      validateOption: {
+        rules:{
+          mobile:{
+            remote:{
+              url: '/api/checkexistmobile',
+              method: 'post'
+            }
+          },
+          captcha: {
+            required: true,
+            minlength: 4,
+            maxlength: 6,
+            remote: {
+              url: '/api/checkcaptcha',
+              method: 'post'
+            }
+          }
+        },
+        messages:{
+          mobile:{
+            remote: ErrMsg.mobileNotExists
+          },
+          captcha: {
+            required: ErrMsg.isCaptcha,
+            remote: ErrMsg.isCaptcha,
+            minlength: ErrMsg.isCaptcha,
+            maxlength: ErrMsg.isCaptcha
+          }
+        }
+      }
+    });

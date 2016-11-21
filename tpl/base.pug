@@ -1,0 +1,144 @@
+doctype html
+html(lang='zh-cn')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+    meta(name='renderer', content='webkit')
+    meta(name='keywords', content = page_keywords?page_keywords:site_keywords)
+    meta(name='description' content = page_description?page_description+', '+site_description:site_description)
+    title
+      block title
+      | #{site_title}
+    meta(name='csrf-param', content='_csrf')
+    meta(name='csrf-token', content=csrf)
+    meta(http-equiv='Cache-Control', content='no-transform')
+    meta(http-equiv='Cache-Control', content='no-siteapp')
+    link(rel='stylesheet', href= UIHelper.static_url('/css/app.css') )
+    block head-style
+    //- <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    //- <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    script(src= UIHelper.static_url('/lib/html5shiv.min.js') )
+    script(src= UIHelper.static_url('/lib/respond.min.js') )
+    <![endif]-->
+    script(src= UIHelper.static_url('/js/lib.js') )
+    block head-script
+  body
+    block body
+      block header
+        .header-top
+          .contain
+            .header-phone
+              i.fa.fa-phone
+              | 客服电话：400-015-5088
+            .wx
+              i.fa.fa-weixin
+              | 微信客服
+            .header-reg
+              if user
+                - var _mobile = UIHelper.safeMobile(_.get(session, 'user.mobile'))
+                a(href='/account').user-account 我的东家
+                a(href='/logout').user-logout 退出
+              else
+                a(href='/signup').regbtn 注册
+                a(href='/login').regbtn-login 登录
+        .header
+          .contain
+            .header-logo
+              a(href='http://jr.jd.com', target='_blank')
+                img(src='/img/logo-jd.png@2x.png').logo-jd
+              a(href='/')
+                img(src='/img/logo_2x.png').logo
+            ul.header-nav
+              li: a(href='/', class={active: path=='/'}).title 首页
+              li: a(href='/about', class={active: _.startsWith(path, '/about')}).title 关于东家
+              li: a(href='/service', class={active: _.startsWith(path, '/service')}).title 产品与服务
+              li.header-nav-last: a(href='/article', class={active: _.startsWith(path,'/article')}).title 东家投研
+      block content
+      block footer
+        .footer
+          .contain
+            .footer-info
+              .footer-info-link
+                a(href='/about').about-link 关于东家
+                a(href='').wise 招贤纳士
+                a(href='') 联系我们
+              .footer-info-copyright &copy; 2004-2016 东家财富 版权所有 | 京ICP备1100000号
+            .footer-work
+              .footer-work-phone
+                i.fa.fa-phone
+                | 400-015-5088
+              .footer-work-detail 全国客服热线(工作日:9:00-20:00)
+        #J_modal.modal
+          .modal-dialog.modal-reg
+            .modal-reg-header
+              h2
+                span 为什么选择
+                | 东家财富
+              .title-line
+              dl
+                dt 精选产品
+                dd 京东独家，全市场优选
+              dl
+                dt 严苛风控
+                dd 三大风控体系，九大筛选标准
+              dl
+                dt 财享生活
+                dd “私享会”给你私享的服务
+              dl
+                dt 贴身服务
+                dd 理财师，随时在线服务
+            .modal-reg-body
+              h2 合格投资者认定
+              .content
+                p 尊敬的京东东家用户：
+                p 认购私募股权融资产品作为一种直接投资方式，与投资债权类理财项目具有明显区别。私募股权融资项目具有较高的风险，京东东家平台（“平台”）、项目发起方或领投人均无法保证您的本金及收益，在投资过程中可能会面临多种风险因素。因此，根据有关法律法规规定的要求，在您选择参与私募股权融资项目前，请仔细阅读以下重要内容。
+                p 平台提示您：平台系通过互联网为非公开股权融资的投融资双方提供信息发布、需求对接等相关服务的中介机构，不向投资者承诺投资本金不受损失或者承诺最低收益，不对被投企业的任何口头、书面陈述或提供/发布的信息的真实性、准确性、完整性做任何明示或暗示的担保，不对被投企业或融资项目的投资价值作出明示或暗示的说明及判定。
+                p 在参与私募股权融资投资项目前，投资者应确保自己符合相关法律法规规定的合格投资人的标准，并完全明白该项投资的性质和所涉及的风险，详细了解和审慎评估私募股权融资项目的资金投资计划、风险评估及预期收益等基本情况，在审慎考虑后决定投资与自身风险承受能力和资产管理需求匹配的项目股权。在投资项目后，投资者应随时关注该项目的信息披露情况，主动及时获取相关信息。
+                p 参与私募股权融资项目的投资人务必自行辨识、判断和承担相应的投资风险，包括但不限于：
+                p 1.政策风险：私募股权融资项目是依照当前的法律法规、相关监管规定和政策设计的。如国家宏观政策以及市场法律法规、相关监管规定发生变化，可能影响被投项目的受理、投资运作、清算等业务的正常进行，并导致项目收益降低甚至本金损失，也可能导致项目违反国家法律、法规或者其他合同的有关规定，进而导致项目被宣告无效、撤销、解除或提前终止等。
+                p 2.信用风险：不排除在被投项目的经营过程中，被投项目的经营管理人存在信用风险、欺诈风险或道德风险的可能性，或所投资的其它资产未达到预期收益，则投资人可能面临收益损失、本金部分损失、甚至本金全部损失的风险。
+                p 3.流动性风险：除另有约定外，投资者无提前终止权或提前赎回股权的权利，可能导致投资者需要资金时不能随时变现，并可能使投资者丧失其他投资机会导致实际收益率为负的风险。
+                p 4.市场风险：由于我国及周边国家、地区宏观经济环境和周边市场的变化，使任何市场主体的经营均处于剧烈波动中，从而导致被投企业的价值不同程度的贬损。
+                p 5.管理风险：受被投企业管理人经验、技能、判断力、执行力等方面的限制，可能对项目的运作及管理造成一定影响，并因此影响投资人收益，甚至造成本金损失。
+                p 6.信息传递风险：被投项目管理人应按照京东东家《信息披露规则》中有关“信息披露”的约定，履行信息披露的义务。投资人应根据“信息披露”的约定及时进行查询。如果投资人未及时查询，或由于通讯故障、系统故障以及其他不可抗力等因素的影响使得投资人无法及时了解项目信息，并由此影响投资人的投资决策，因此而产生的责任和风险由投资人自行承担。另外，投资人预留在平台有效联系方式发生变更，应及时通知平台，若被投项目管理人无法及时联系到投资人，并可能会由此影响投资人的投资决策，由此而产生的责任和风险由投资人自行承担。
+                p 7.认购风险：如出现市场剧烈波动、相关法规政策变化或其他可能影响项目正常运作的情况，项目发起人有权终止项目并退回投资款，投资人将无法在约定募集期内认购该项目股权。因此造成的任何损失由投资人自行承担。
+                p 8、技术风险：由于平台的业务是通过电子通讯技术和电脑技术来实现的，这些技术存在被网络黑客和计算机病毒攻击的可能，平台将尽力保障平台正常运行，但您将承担由您的个人电脑终端故障或平台以外因素导致系统故障而造成的损失。
+                p 9.不可抗力及意外事件风险：包括但不限于自然灾害、金融市场危机、战争或国家政策变化等不能预见、不能避免、不能克服的不可抗力事件或银行系统故障、通讯故障、投资市场停止交易等意外事件的发生，可能对项目的成立、投资运作、资金返还、信息披露、公告通知等造成影响，甚至可能导致项目收益降低乃至本金损失。对于由于不可抗力及意外事件风险导致的任何损失，投资人须自行承担，平台对此不承担任何责任。
+                p 10、其他平台无法预见、无法避免或无法控制的风险。
+                p 本风险提示书并不保证揭示您使用平台在线投资服务进行投资所面临的全部风险，您参与此项业务前，应全面了解相关法律法规、认真阅读平台的《用户服务协议》及其他规则，并根据您自身的投资目的、投资期限、投资经验、资产状况等判断是否具备相应的投资风险承受能力。
+                p 您承诺并保证已认真阅读本投资风险提示书，理解以上所揭示的所有风险，并愿意承担投资风险给您造成的损失。
+                p 对于任何参与人故意提供虚假信息或隐瞒可能对平台其他各方产生误导的重大信息的欺诈行为或不诚信行为，本公司将保留依法追究相关行为方法律责任的权利。平台不对非公开股权融资项目交易各方达成的或涉及的法定义务和/或协议约定承担任何责任。除监管部门另有规定外，平台无法定义务参与到私募融资项目交易有关的任何理赔、纠纷处理等活动，但若您遇到前述问题，平台将给予您合理帮助。
+                p 风险提示人：北京长天资产管理有限公司
+              .reg-footer
+                //-
+                  a(href='/signup').pure-button.btn-button.btn-button-primary 注册
+                if !user
+                  a(href='/login').pure-button.btn-button.btn-button-primary 我已阅读并确认
+                else
+                  a(href='javascript:;').pure-button.btn-button.btn-button-primary#J_confirm 我已阅读并确认
+      script(src= UIHelper.static_url('/js/app.js') )
+      - var isShow = _.get(session, 'qualified') || false
+      - var isQualified = qualified || false
+      script.
+        $('#J_confirm').on('click', function () {
+          $.post('/api/investConfirm')
+            .done(function (json) {
+              location.reload();
+            });
+        });
+        var _showModal;
+        var _isShow = #{isShow}
+        var _isQualified = #{isQualified}
+        if(_isQualified && !_isShow){
+          _showModal = 1
+        }else{
+          _showModal = 0
+        }
+        $('#J_modal').modal({
+          show: _showModal,
+          width: 730,
+          height: 460
+        });
+    block foot-script

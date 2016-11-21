@@ -1,0 +1,48 @@
+html
+  header
+    meta(name='csrf-param', content='_csrf')
+    meta(name='csrf-token', content=csrf)
+    <!--[if lt IE 9]>
+    script(src= UIHelper.static_url('/lib/html5shiv.min.js') )
+    script(src= UIHelper.static_url('/lib/respond.min.js') )
+    <![endif]-->
+    script(src= UIHelper.static_url('/js/lib.js') )
+    link(rel='stylesheet', href= UIHelper.static_url('/ueditor/themes/default/css/ueditor.min.css') )
+    script(src= UIHelper.static_url('/ueditor/ueditor.config.js') )
+    script(src= UIHelper.static_url('/ueditor/ueditor.all.min.js') )
+    script(src= UIHelper.static_url('/ueditor/lang/zh-cn/zh-cn.js') )
+  body
+    h2 Add
+    #J_login-error.login-errors.text-danger
+      if errors
+        .login-error
+          include ./mod/error.pug
+    form#J_add(action='/add', method='post')
+      .content
+        label title
+        input(type='text', name='title')#J_title
+        .help-inline
+      .content
+        label class
+        select(name='class')#J_class
+          option(value='0', selected) net
+          option(value='1') mobile
+          option(value='2') web
+        .help-inline
+      .content
+        script(id="J_editor", name='content', type="text/plain", style="width:1024px;height:200px;").
+        .help-inline
+      .content
+        input(type='hidden', name='_csrf', value=csrf)
+        button(type='submit') add
+    script(src= UIHelper.static_url('/js/app.js') )
+
+block foot-script
+  script.
+    UE.getEditor('J_editor');
+    app.articleAdd({
+      form: '#J_add',
+      title: '#J_title',
+      class: '#J_class',
+      content: '#J_editor'
+    });

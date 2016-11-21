@@ -1,0 +1,13 @@
+.product-order-result
+  if result == 1
+    h3.product-order-succes-text
+      i.fa.fa-check-circle.product-order-succes
+      | 预约成功！
+    .result-txt 您已成功预约产品，稍后我们的专业理财顾问将电话联系您，为您提供专属服务
+    a(href='/product/'+ productId)#J_result.pure-button.btn-button-primary.product-order-btn 完成
+  else
+    h3
+      i.fa.fa-exclamation-circle.product-order-error
+      | 预约失败！
+    .result-txt #{msg}
+    a(href='/product/'+ productId)#J_result.pure-button.btn-button-primary.product-order-btn 我知道了

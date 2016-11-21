@@ -1,0 +1,122 @@
+.service
+  $service-title-number-color = #e1e1e1
+  $service-title-number-ligter-color = #e5e5e5
+  $service-nubmer-larger = 60px
+  $service-line-color = #e8e8e8
+  $service-title-color = #213549
+  $about-text-color = $grey-color
+  padding-bottom: 100px
+  min-width: $container-width
+  &-banner
+    min-height: 320px
+    background: url('/img/product-service-banner.png') top center no-repeat
+  &-nav
+    position: relative
+    min-height: 320px
+    &-tab
+      position: absolute
+      left: 0
+      bottom: 0
+      a
+        width: 160px
+        text-align: center
+        display: inline-block
+        text-decoration: none
+        background: #c4c3c1
+        font-size: $font-size-middle
+        color: $grey-color
+        padding: 8px 0
+        margin-right: 10px
+        border-top-radius(4px)
+        &:hover
+          background: $white-color
+          color: $base-color
+      .active
+        background: $white-color
+        color: $base-color
+  &-title
+    padding: 60px 0 20px
+    border-bottom: 1px solid $service-line-color
+    h2
+      font-size: $font-size-h3
+      padding-left: 30px
+      border-left: 4px solid $base-color
+      font-weight: normal
+      margin: 0
+      color: $gray-darker
+      line-height: 28px
+  &-text
+    font-size: $font-size-h4
+    padding: 20px 30px 50px
+    color: $grey-color
+    p
+      margin: 0
+      line-height: 36px
+  &-debt
+  &-equity
+  &-alter
+    background: $grey-base-bg
+  &-wrap
+    padding: 30px 0
+    clearfix()
+    h2
+      color: $service-title-number-color
+      font-size: $service-nubmer-larger
+      font-weight: normal
+      margin: 0
+      span
+        color: $service-title-number-ligter-color
+        font-size: $font-size-huge
+        margin-left: 10px
+  &-txt-title
+    color: $gray-darker
+    font-size: $font-size-h3
+    margin: 20px 0 22px
+  &-txt-content
+    color: $about-text-color
+    font-size: $font-size-middle
+    line-height: 30px
+  &-debt
+  &-equity
+  &-alter
+    &-img
+      float: left
+    &-text
+      margin-left: 370px
+      padding: 30px 40px 0 40px
+  &-overseas-text
+  &-funds-text
+    width: 670px
+    float: left
+    padding: 30px 40px 0 0
+  &-list
+    padding: 24px 0 30px
+    &-item
+      text-align: center
+      padding: 0 30px
+      .item-title
+        margin: 20px 0 10px
+        font-size: $font-size-h3
+        position: relative
+        color: $gray-darker
+        &:before
+        &:after
+          width: 20px
+          height: 2px
+          content: ' '
+          background: $base-color
+          position: absolute
+        &:before
+          left: 50%
+          margin-left: -80px
+          top: 16px
+        &:after
+          right: 50%
+          top: 16px
+          margin-right: -80px
+      .item-content
+        font-size: $font-size-middle
+        color: $about-text-color
+        p
+          margin: 0
+          line-height: 30px

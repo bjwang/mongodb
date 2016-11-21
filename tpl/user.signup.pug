@@ -1,0 +1,49 @@
+extend base
+
+block content
+  - var _query = query || {}
+  .signup
+    .contain.signup-wrap
+      .signup-header
+        h2 注册东家帐号
+        if errors
+          .signup-error
+            include ./mod/error.pug
+        form#J_signup-form.pure-form.pure-form-aligned(method='post')
+          .pure-control-group.form-group
+            label(for='J_mobile') 手机号码
+            input(type='text', id='J_mobile', name='mobile', placeholder='请输入手机号码', value=_query.mobile, minlength='11', maxlength='11')
+            .help-inline
+          .pure-control-group.form-group
+            label(for='J_captcha') 图形验证码
+            input(type='text', id='J_captcha', name='captcha', minlength='4', maxlength='6', value=_query.captcha, placeholder='请输入图形验证码').signup-captcha
+            img#J_captcha-img.J_captcha-refresh.captcha-img(src='/captcha?_='+Math.random().toString().substr(2,6), data-target='#J_captcha-img', data-src='/captcha', alt='看不清，点击刷新')
+            .help-inline
+          .pure-control-group.form-group
+            label(for='J_code') 验证码
+            input(type='text', id='J_code', name='smscode', minlength='6', maxlength='6', placeholder='请输入验证码').signup-code
+            button#J_verifycode.btn.verifycode-button(type='button', tabindex='-1') 获取验证码
+            .help-inline
+          .pure-control-group.form-group
+            label(for='J_password') 登录密码
+            input(type='password', id='J_password', name='password', placeholder='请输入登录密码')
+            .help-inline
+          .pure-controls
+            input(type='hidden', name='_csrf', value=csrf)
+            button(type='submit').pure-button.btn-button-primary.btn-signup 注册
+            .signup-tips
+              | 注册即表示您同意并遵守东家财富
+              a(href='/agreement', target='_blank') 用户协议
+              | 和
+              a(href='/agreement', target='_blank') 隐私政策
+      .signup-body
+        .signup-login-link
+          p 已有帐号
+          a(href='/login') 立即登录
+block foot-script
+  script.
+    app.signup({
+      form: '#J_signup-form',
+      mobile: '#J_mobile',
+      trigger: '#J_verifycode'
+    });

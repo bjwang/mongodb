@@ -1,0 +1,38 @@
+.pagination
+  $_color         = $base-color
+  $_bg-color      = #faf7f1
+  text-align center
+  margin-top 20px
+  padding-bottom 20px
+  padding-left: 0
+  display inherit
+  li
+    display inline-block
+    a
+    button
+      text-decoration: none
+      border-radius 4px
+      font-size 16px
+      display inline-block
+      margin-right 10px
+      padding 0 10px
+      line-height 30px
+      color: $grey-color-lighter
+      &:hover
+        text-decoration none
+        background $_bg-color
+        color: $_color
+    button[disabled]
+      color: $_color
+      background-color: $_bg-color
+      &:hover
+        color: $_color
+    span
+      display inline-block
+      margin-right 10px
+      line-height 30px
+      color #666666
+  .pages-active
+    a
+      background: $_bg-color
+      color: $_color

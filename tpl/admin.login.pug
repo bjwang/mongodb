@@ -1,0 +1,37 @@
+html
+  header
+    meta(name='csrf-param', content='_csrf')
+    meta(name='csrf-token', content=csrf)
+    <!--[if lt IE 9]>
+    script(src= UIHelper.static_url('/lib/html5shiv.min.js') )
+    script(src= UIHelper.static_url('/lib/respond.min.js') )
+    <![endif]-->
+    script(src= UIHelper.static_url('/js/lib.js') )
+    link(rel='stylesheet', href= UIHelper.static_url('/ueditor/themes/default/css/ueditor.min.css') )
+    script(src= UIHelper.static_url('/ueditor/ueditor.config.js') )
+    script(src= UIHelper.static_url('/ueditor/ueditor.all.min.js') )
+    script(src= UIHelper.static_url('/ueditor/lang/zh-cn/zh-cn.js') )
+  body.admin_login
+    #J_login-error.login-errors.text-danger
+      if errors
+        .login-error
+          include ./mod/error.pug
+    form#J_login(action='/admin', method='post')
+      .content
+        label username
+        input(type='text', name='username')#J_username
+        .help-inline
+      .content
+        label pwd
+        input(type='text', name='password')#J_pwd
+        .help-inline
+      .content
+        label code
+        input(type='text', name='code')#J_code
+      .content
+        input(type='hidden', name='_csrf', value=csrf)
+        button(type='submit') login
+    script(src= UIHelper.static_url('/js/app.js') )
+
+block foot-script
+  script.

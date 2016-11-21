@@ -1,0 +1,34 @@
+extend base
+
+block content
+  - var _articleTitle = _.get(articleDetail, 'title') || ''
+  - var _articleCreatetime = _.get(articleDetail, 'createTime') || ''
+  - var _articleUpdatetime = _.get(articleDetail, 'updateTime') || ''
+  - var _articleSrc = _.get(articleDetail, 'src') || ''
+  - var _articleContent = _.get(articleDetail, 'content') || ''
+  - var _articleDownloadUrl = _.get(articleDetail, 'attachment') || ''
+  - var _articleCategoryId = _.get(articleDetail, 'subCategory', 0) - 0 || 0
+  - var _articleType = UIHelper.articleType(_articleCategoryId)
+  - var _articleInvestment = _articleType.investment
+  - var _articleAssert = _articleType.assert
+  - var _articlePrivate = _articleType.private
+  .article
+    .contain.article-wrap
+      .article-title
+        h3 研究详情
+      .article-detail
+        h1 #{_articleTitle}
+        .article-detail-subtitle #{_articleSrc} #{UIHelper.formatdate('YYYY-MM-DD HH:mm', _articleCreatetime)}
+          if _articleInvestment
+            span 投资策略
+          else if _articleAssert
+            span 资产配置
+          else if _articlePrivate
+            span 私募市场
+        .article-detail-body!= _articleContent
+        .article-detail-downloadbtn
+          a(href= _articleDownloadUrl, target='_blank')
+            i.fa.fa-download
+            | 下载
+        .article-detail-listlink
+          a(href='/article') 查看其它投研报告

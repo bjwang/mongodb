@@ -1,0 +1,95 @@
+.modal
+  position: fixed
+  z-index: 9
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+  opacity: 1
+  display: none
+  &-dialog
+    width: 500px
+    height:300px
+    background: $white-color
+    margin: 120px auto 0
+    border-radius(2px)
+  &-cover
+    position: fixed
+    z-index: 8
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    background: #000000
+    opacity: .5
+    display: none
+  &-reg
+    &-header
+      float: left
+      min-height: 460px
+      background: url('/img/reg-tips-bg.png') no-repeat top left
+      padding: 40px 24px
+      color: $white-color
+      overflow: hidden
+      h2
+        margin: 0 0 70px
+        font-size: $font-size-bigger
+        span
+          font-size: $font-size-h5
+          display: block
+          opacity: .7
+      dl
+        margin-bottom: 24px
+      dt
+        font-size: $font-size-h5
+      dd
+        margin: 0
+        font-size: $font-size-h6
+        opacity: .7
+      .title-line
+        width: 26px
+        height: 2px
+        background: #bbc8e1
+    &-body
+      $modal-content-yellow-color = #c18003
+      margin-left: 206px
+      padding: 30px
+      h2
+        margin: 0
+        font-size: $font-size-h3
+        color: $gray-darker
+        text-align: center
+        padding-bottom: 20px
+      .content
+        font-size: $font-size-base
+        color: $gray-darker
+        line-height: 26px
+        height: 280px
+        overflow-y: scroll
+      .reg-footer
+        margin-top: 30px
+        text-align: center
+        .btn-button
+          display: inline-block
+          margin: 0 10px
+          line-height: 34px
+          font-size: $font-size-middle
+          padding: 0 30px
+          border-radius(4px)
+      .confired
+        color: $grey-color-lighter
+  &-confirm
+    text-align: center
+    h2
+      text-align: center
+      font-weight: normal
+      margin: 0
+      padding: 90px 0 70px
+      color: $gray-darker
+      font-size: $font-size-h3
+    .btn-confirm
+      display: inline-block
+      margin-right: 20px
+      font-size: $font-size-h4
+      padding: 0 66px
+      line-height: 42px

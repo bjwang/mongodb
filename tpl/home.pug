@@ -1,0 +1,36 @@
+extend base
+
+block content
+  .home-slider.home-banner
+    ul
+      each item,idx in bannerList
+        - var _now = _now || Date.now()
+        - var bannerSrc = _.get(item, 'image') || ''
+        - var bannerUrl = _.get(item, 'url') || ''
+        - var _start = _.get(item, 'startTime', 0) - 0 || 0
+        - var _end = _.get(item, 'endTime', 0) - 0 || 0
+        if (_start < _now) && ( !_end || _now < _end)
+          li: a(href= bannerUrl)
+            img(src= bannerSrc, width='100%')
+  .home-about
+    .contain.home-wrap
+      .home-about-title: img(src='/img/home-about-title.png')
+      .home-about-img: img(src='/img/home-about-img.png')
+      .home-about-line
+      .home-about-text
+        p 东家财富是京东金融旗下高端财富管理服务平台，专注于为高端客  户提供优质资产和科学的进行资产配置服务。
+        p 依托京东金融集团强大的资源整合能力以及大数据的优势 、专业风险控制能力，对用户资产的收益、风险、流动性进行科学管理，满足高端人群的个性化财å†富管理需求，帮助客户实现财富持续保值和增值。
+        a(href='/about').home-about-more 更多>>
+  .home-commend
+    .contain
+      .home-commend-title: img(src='/img/home-recommend-title.png')
+      .home-commend-list
+        - var dataList = productList || []
+        if dataList && dataList.length
+          include ./mod/product.item.pug
+        else
+          .home-commend-list-no 暂无数据
+
+block foot-script
+  script.
+    app.home.slide();

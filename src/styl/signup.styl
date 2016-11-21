@@ -1,0 +1,115 @@
+.signup
+  $signup-border-color = #f5f5f5
+  $signup-input-border-color = #e5e5e5
+  background: $grey-base-bg
+  padding: 40px 0
+  min-width: $container-width
+  &-wrap
+    overflow: hidden
+    background: $white-color
+    clearfix()
+  &-header
+    width: 780px
+    padding: 20px 80px 0 20px
+    float: left
+    h2
+      font-size: $font-size-h4
+      color: $gray-darker
+      border-bottom: 2px solid $signup-border-color
+      padding: 0 0 10px 10px
+      margin-bottom: 46px
+    .pure-control-group
+      margin-bottom: 20px
+      label
+        width: 174px
+        color: $gray-darker
+    .result-success
+      color: $brand-success
+      font-size: $font-size-h3
+      i
+        font-size: $font-size-h4
+        display: inline-block
+        margin-right: 8px
+        vertical-align: middle
+    .pure-form
+      input[type=text]
+      input[type=password]
+        width: 300px
+        border: 1px solid $signup-input-border-color
+        box-shadow: none
+        border-radius(2px)
+        padding: 4px 16px
+        line-height: 30px
+      input.signup-captcha
+      input.signup-code
+        width: 190px
+    .pure-controls
+      margin-left: 188px
+    .captcha-img
+      vertical-align: middle
+      width: 90px
+      margin-left: 20px
+    .verifycode-button
+      color: $base-color
+      font-size: $font-size-base
+      border: 1px solid $base-color
+      border-radius(2px)
+      background: none
+      padding: 5px 12px 6px
+      margin-left: 10px
+  &-body
+    width: 320px
+    min-height: 468px
+    margin-left: 780px
+    padding: 40px 0 0 30px
+    background: url('/img/login-tips-bg.png') top left no-repeat
+  &-tips
+    color: $grey-color-better
+    font-size: $font-size-h6
+    margin-top: 10px
+    a
+      color: $base-color
+      text-decoration: none
+  &-login-link
+    color: $white-color
+    p
+      margin: 0 0 10px
+      font-size: $font-size-h6
+      opacity: .7
+    a
+      color: $white-color
+      font-size: $font-size-h4
+      text-decoration: none
+  &-error
+    color: $brand-danger
+    padding-left: 60px
+    li
+      list-style: none
+  &-result
+    padding: 40px 0
+    text-align: center
+    background: $grey-base-bg
+    &-wrap
+      min-height: 500px
+      background: $white-color
+      padding-top: 120px
+    h2
+      i
+        font-size: 34px
+        margin-right: 20px
+        vertical-align: middle
+        margin-top: -8px
+        color: $brand-success
+      span
+        font-size: $font-size-h3
+        color: $gray-darker
+        font-weight: normal
+    a
+      color: $base-color
+      margin-top: 40px
+      display: inline-block
+      text-decoration: none
+      font-size: $font-size-middle
+    &-tips
+      font-size: $font-size-h2
+

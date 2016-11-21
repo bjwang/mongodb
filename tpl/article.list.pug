@@ -1,0 +1,52 @@
+extend base
+
+block content
+  .article
+    .contain.article-wrap
+      .article-title
+        h3 全部研究报告
+      if errors
+        .article-error
+          include ./mod/error.pug
+      if articleList && articleList.length
+        .article-list
+          each item,idx in articleList
+            - var _articleId = _.get(item, 'id', 0) || 0
+            - var _articleTitle = _.get(item, 'title') || ''
+            - var _articleSynopsis = _.get(item, 'synopsis') || ''
+            - var _articleCreatetime = _.get(item, 'createTime') || ''
+            - var _articleSrc = _.get(item, 'src') || ''
+            - var _articleDownloadUrl = _.get(item, 'attachment') || ''
+            - var _articleCategoryId = _.get(item, 'subCategory', 0) - 0 || 0
+            - var _articleType = UIHelper.articleType(_articleCategoryId)
+            - var _articleInvestment = _articleType.investment
+            - var _articleAssert = _articleType.assert
+            - var _articlePrivate = _articleType.private
+            .article-item
+              .article-item-header
+                a(href='/article/'+_articleId)
+                  if _articleInvestment
+                    img(src='/img/article-category-investment.png')
+                    .article-item-class-title 投资策略
+                  else if _articleAssert
+                    img(src='/img/article-category-assert.png')
+                    .article-item-class-title 资产配置
+                  else if _articlePrivate
+                    img(src='/img/article-category-private.png')
+                    .article-item-class-title 私募市场
+              .article-item-body
+                a(href='/article/'+_articleId).article-item-title #{_articleTitle}
+                a(href='/article/'+_articleId).article-item-introduction
+                  if _articleSynopsis.length > 120
+                    | #{_articleSynopsis.substring(0, 120)}...
+                  else
+                    | #{_articleSynopsis}
+                .article-item-footer
+                  span #{UIHelper.formatdate('YYYY-MM-DD HH:mm', _articleCreatetime)}
+                  span 来源：#{_articleSrc}
+                  a(href= _articleDownloadUrl, target='_blank')
+                    i.fa.fa-download
+                    | 下载
+        include ./mod/pager.pug
+      else
+        .no-result 暂无数据

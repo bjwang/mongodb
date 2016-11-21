@@ -1,0 +1,72 @@
+.unslider
+  overflow: hidden
+  margin: 0
+  padding: 0
+  position: relative
+  &-wrap
+    position: relative
+  &-carousel>li
+    float: left
+    img
+      display: block
+  &-vertical>ul
+    height: 100%
+    li
+      float: none
+      width: 100%
+  &-fade
+    position: relative
+    .unslider-wrap
+      li
+        position: absolute
+        left: 0
+        top: 0
+        right: 0
+        z-index: 8
+        &.unslider-active
+          z-index: 10
+  li
+  ol
+  ul
+    list-style: none
+    margin: 0
+    padding: 0
+    border: none
+  &-arrow
+    position: absolute
+    left: 20px
+    z-index: 2
+    cursor: pointer
+    font-size: 50px
+    color: $white-color
+    opacity: .7
+    margin-top: -30px
+    &.next
+      left: auto
+      right: 20px
+      top: 50%
+    &.prev
+      left: 20px
+      top: 50%
+  &-nav
+    position: absolute
+    bottom: 10px
+    left: 50%
+    margin-left: -36px
+    ol
+      list-style: none
+      text-align: center
+    li
+      display: inline-block
+      width: 14px
+      height: 14px
+      margin: 0 4px
+      background: transparent
+      border-radius: 100%
+      overflow: hidden
+      text-indent: -999em
+      border: 2px solid $white-color
+      cursor: pointer
+      &.unslider-active
+        background: $white-color
+        cursor: default
