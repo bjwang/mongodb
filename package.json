@@ -1,14 +1,14 @@
 {
   "name": "riches",
   "version": "0.0.1",
-  "description": "riches web",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "dev": "nodemon -e jade,pug,js,styl,css app.js",
     "watch": "gulp build && gulp watch",
     "build": "gulp build"
   },
-  "author": "",
+  "author": "13458180@qq.com",
   "license": "ISC",
   "dependencies": {
     "accounting": "^0.4.1",
