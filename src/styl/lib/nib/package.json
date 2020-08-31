@@ -11,7 +11,7 @@
     "stylus": "0.49.x"
   },
   "devDependencies": {
-    "connect": "1.x",
+    "connect": "3.x",
     "jade": "0.22.0",
     "mocha": "*",
     "should": "*"
